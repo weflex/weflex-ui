@@ -32,7 +32,7 @@ function buildNewStyle(config, callback) {
     config,
     contents
   ].join('\n');
-  return less.render(source, {compress: false}, callback);
+  return less.render(source, {compress: true}, callback);
 }
 
 buildNewStyle(require('./src/config.js'), function(err, output) {
