@@ -1,5 +1,5 @@
 module.exports = {
-  'prefix': 'ui',
+  'prefix': 'weflex',
   'font-family': '"Open Sans", "PingFang SC", sans-serif',
   'font-size-base': '12px',
   'text-color': '#898989',

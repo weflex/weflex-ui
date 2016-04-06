@@ -91,6 +91,7 @@ class ExampleIndex extends React.Component {
     this.state = {
       date: '2015-04-22',
       time: '12:20',
+      selected: 'jack',
     };
   }
   onClickIntervalButton() {
@@ -100,9 +101,12 @@ class ExampleIndex extends React.Component {
     return (
       <UIFramework>
         <UIFramework.Row name="title" hint="hint">
-          <UIFramework.TextInput placeholder="haha" flex={0.4} />
-          <UIFramework.TimeInput flex={0.3} />
-          <UIFramework.DateInput flex={0.3} />
+          <UIFramework.TextInput placeholder="haha" flex={0.4} disabled={true}
+            value={`${this.state.date} <> ${this.state.time}`} />
+          <UIFramework.DateInput flex={0.3} 
+            bindStateCtx={this} bindStateName="date" value={this.state.date} />
+          <UIFramework.TimeInput flex={0.3}
+            bindStateCtx={this} bindStateName="time" value={this.state.time} />
         </UIFramework.Row>
         <UIFramework.Row name="row2" hint="hint2 text">
           <UIFramework.TextInput />
@@ -158,10 +162,17 @@ class ExampleIndex extends React.Component {
           />
         </UIFramework.Row>
         <UIFramework.Row name="selects" hint="this is progress bars">
-          <UIFramework.Select defaultValue="lucy" flex={1} options={[
-            {text: 'jack'},
-            {text: 'lucy'},
-          ]} />
+          <UIFramework.Select flex={0.5} 
+            options={[
+              {text: 'jack'},
+              {text: 'lucy'},
+            ]}
+            bindStateCtx={this}
+            bindStateName="selected"
+            value={this.state.selected}
+          />
+          <UIFramework.TextInput flex={0.5}
+            disabled={true} value={`selected: ${this.state.selected}`} />
         </UIFramework.Row>
         <CommonModalExample />
         <ConformModalExample />
