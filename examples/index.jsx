@@ -85,6 +85,21 @@ class ConformModalExample extends React.Component {
   }
 }
 
+class UploadExample extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <UIFramework.Row name="upload">
+        <UIFramework.Upload token="token">
+          <UIFramework.Button>upload</UIFramework.Button>
+        </UIFramework.Upload>
+      </UIFramework.Row>
+    );
+  }
+}
+
 class ExampleIndex extends React.Component {
   constructor(props) {
     super(props);
@@ -176,6 +191,7 @@ class ExampleIndex extends React.Component {
         </UIFramework.Row>
         <CommonModalExample />
         <ConformModalExample />
+        <UploadExample />
       </UIFramework>
     );
   }

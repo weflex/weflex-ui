@@ -61,6 +61,7 @@ export default UIFramework.Component(class extends React.Component {
     showUploadList: true,
     listType: 'text',
     className: '',
+    action: 'http://upload.qiniu.com/',
   };
   static styles = {
     clickable: {
@@ -71,31 +72,47 @@ export default UIFramework.Component(class extends React.Component {
   };
   constructor(props) {
     super(props);
+    this.uploadData = {};
     this.state = {
       fileList: this.props.fileList || this.props.defaultFileList || [],
       dragState: 'drop'
     };
   }
   onStart() {
+    // FIXME(Yorkie): i dont know what to do here
   }
-  onError() {
+  onError(err) {
+    if (typeof this.props.onError === 'function') {
+      this.props.onError(err);
+    }
   }
   onProgress() {
+    // TODO(Yorkie): just for ui
   }
-  onSuccess() {
+  onSuccess(result, file) {
+    if (typeof this.props.onSuccess === 'function') {
+      this.props.onSuccess(result, file);
+    }
   }
-  beforeUpload() {
+  beforeUpload(file) {
+    this.uploadData = {
+      'key': file.name,
+      'token': this.props.token,
+      'x:filename': file.name,
+      'x:size': file.size,
+    };
   }
   render() {
     let type = this.props.type || 'select';
     let props = {
       ...this.props,
+      data: () => this.uploadData,
       style: this.props.styles.clickable,
       onStart: this.onStart,
       onError: this.onError,
       onProgress: this.onProgress,
-      onSuccess: this.onSuccess,
-      beforeUpload: this.beforeUpload,
+      onSuccess: this.onSuccess.bind(this),
+      beforeUpload: this.beforeUpload.bind(this),
     };
     let uploadList;
     if (this.props.showUploadList) {
