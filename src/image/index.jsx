@@ -42,11 +42,11 @@ export default UIFramework.Component(
       } else {
         uri = this.props.src.uri;
       }
-      const imgStyl = {
+      const imgStyl = Object.assign(this.props.style, {
         width: this.props.size,
         height: this.props.size,
         borderRadius: this.props.config['border-radius-base'],
-      };
+      });
       if (this.props.circle) {
         imgStyl.borderRadius = this.props.size / 2;
       }
