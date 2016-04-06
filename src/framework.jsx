@@ -194,6 +194,29 @@ var Cell = UIComponent(class Cell extends React.Component {
   }
 });
 
+var Divider = UIComponent(class Divider extends React.Component {
+  static label = 'divider';
+  static propTypes = {
+    height: React.PropTypes.number,
+    stroke: React.PropTypes.number,
+  };
+  static defaultProps = {
+    height: 20,
+    stroke: 0,
+  };
+  render() {
+    const margin = (this.props.height - this.props.stroke) / 2;
+    const styl = {
+      display: 'block',
+      color: this.props.config['border-color-base'],
+      height: this.props.stroke + 'px',
+      marginTop: margin + 'px',
+      marginBottom: margin + 'px',
+    };
+    return <div className={this.props.className} style={style}></div>;
+  }
+});
+
 /**
  * @class UIText
  * @extends React.Component
@@ -353,6 +376,7 @@ class UIControl extends BindingComponent {
 
 UIFramework.Row = Row;
 UIFramework.Cell = Cell;
+UIFramework.Divider = Divider;
 UIFramework.Text = Text;
 UIFramework.Label = Label;
 UIFramework.Component = UIComponent;

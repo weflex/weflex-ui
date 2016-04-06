@@ -23,6 +23,9 @@ export default UIFramework.Component(
        * @property {Number} size - the size
        */
       size: React.PropTypes.number,
+      /**
+       * @property {Boolean} circle - if a circle image
+       */
       circle: React.PropTypes.bool,
     };
     static defaultProps = {
@@ -30,7 +33,7 @@ export default UIFramework.Component(
         uri: DEFAULT_AVATAR,
       },
       size: 40,
-      className: '',
+      circle: false,
     };
     render() {
       let uri;
