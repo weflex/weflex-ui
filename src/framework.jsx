@@ -206,14 +206,15 @@ var Divider = UIComponent(class Divider extends React.Component {
   };
   render() {
     const margin = (this.props.height - this.props.stroke) / 2;
-    const styl = {
-      display: 'block',
-      color: this.props.config['border-color-base'],
-      height: this.props.stroke + 'px',
-      marginTop: margin + 'px',
-      marginBottom: margin + 'px',
-    };
-    return <div className={this.props.className} style={style}></div>;
+    return (
+      <div className={this.props.className} style={{
+        display: 'block',
+        color: this.props.config['border-color-base'],
+        height: this.props.stroke + 'px',
+        marginTop: margin + 'px',
+        marginBottom: margin + 'px',
+      }}></div>
+    );
   }
 });
 
