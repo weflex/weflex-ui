@@ -1,12 +1,11 @@
-"use strict"
+'use strict'
 
 import React from 'react';
-import { IControl } from '../base';
+import UIFramework from '../framework';
 
-/**
- * @class UITextInput
- */
-class UITextInput extends IControl {
+export default UIFramework.Component(class extends UIFramework.Control {
+  static label    = 'text-input';
+  static flexbox  = true;
   static propTypes = {
     /**
      * @property {Boolean} password - if true, this is a password input
@@ -51,15 +50,12 @@ class UITextInput extends IControl {
   render() {
     if (this.props.multiline) {
       const newProps = this.createProps({
-        style: UITextInput.styles.multiline,
+        style: this.props.styles.multiline,
       });
       return <textarea ref="input" {...newProps} />;
     } else {
       const type = this.props.password ? 'password' : 'text';
-      const newProps = this.createProps({type});
-      return <input ref="input" {...newProps} />;
+      return <input ref="input" {...this.createProps({type})} />;
     }
   }
-}
-
-module.exports = UITextInput;
+});

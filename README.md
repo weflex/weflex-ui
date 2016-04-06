@@ -1,21 +1,16 @@
-# react-ui-form
+# weflex-ui
 
 [![NPM version][npm-image]][npm-url]
 [![Build status][travis-image]][travis-url]
 [![Dependency Status][david-image]][david-url]
 [![Downloads][downloads-image]][downloads-url]
 
-The UI Component that providing basic form controls which is compatible with React.js
+The UI Library that used by WeFlex Products and Developers.
 
 ## Get Started
 
 ```jsx
-import {
-  UIForm,
-  UIRow,
-  UITextInput,
-  UIButton,
-} from 'react-ui-form';
+import UIFramework from 'weflex-ui';
 
 class ExampleForm extends React.Component {
   constructor(props) {
@@ -31,17 +26,17 @@ class ExampleForm extends React.Component {
   }
   render() {
     return (
-      <UIForm>
-        <Row name="username">
-          <UITextInput bindStateCtx={this} bindStateName="username" />
-        </Row>
-        <Row name="username">
+      <UIFramework>
+        <UIFramework.Row name="username">
+          <UIFramework.TextInput bindStateCtx={this} bindStateName="username" />
+        </UIFramework.Row>
+        <UIFramework.Row name="username">
           <UITextInput bindStateCtx={this} bindStateName="username" password={true} />
-        </Row>
-        <Row name="username">
-          <UIButton text="login" onClick={this.onLogin.bind(this)} />
-        </Row>
-      </UIForm>
+        </UIFramework.Row>
+        <UIFramework.Row name="username">
+          <UIFramework.Button text="login" onClick={this.onLogin.bind(this)} />
+        </UIFramework.Row>
+      </UIFramework>
     )
   }
 }
@@ -50,25 +45,12 @@ class ExampleForm extends React.Component {
 
 ## Components
 
-- Basis
-  - [`UIForm`](src/base.jsx)
-  - [`UIRow`](src/base.jsx)
-  - [`UIText`](src/base.jsx)
-- Buttons
-  - [`UIButton`](src/button/base.jsx)
-- Inputs
-  - [`UITextInput`](src/input/text.jsx)
-  - [`UIDateInput`](src/input/date.jsx)
-  - [`UITimeInput`](src/input/time.jsx)
-- Pickers
-  - [`UIOptionPicker`](src/picker/option.jsx)
-  - [`UIColorPicker`](src/picker/color.jsx)
-
+See [src/](./src) for components.
 
 ## Installation
 
 ```sh
-$ npm install react-ui-form
+$ npm install weflex-ui --save-dev
 ```
 
 ## Tests
@@ -90,11 +72,11 @@ $ open ./index.html
 
 MIT @ WeFlex
 
-[npm-image]: https://img.shields.io/npm/v/react-ui-form.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/react-ui-form
-[travis-image]: https://img.shields.io/travis/weflex/react-ui-form.svg?style=flat-square
-[travis-url]: https://travis-ci.org/weflex/react-ui-form
-[david-image]: http://img.shields.io/david/weflex/react-ui-form.svg?style=flat-square
-[david-url]: https://david-dm.org/weflex/react-ui-form
-[downloads-image]: http://img.shields.io/npm/dm/react-ui-form.svg?style=flat-square
-[downloads-url]: https://npmjs.org/package/react-ui-form
+[npm-image]: https://img.shields.io/npm/v/weflex-ui.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/weflex-ui
+[travis-image]: https://img.shields.io/travis/weflex/weflex-ui.svg?style=flat-square
+[travis-url]: https://travis-ci.org/weflex/weflex-ui
+[david-image]: http://img.shields.io/david/weflex/weflex-ui.svg?style=flat-square
+[david-url]: https://david-dm.org/weflex/weflex-ui
+[downloads-image]: http://img.shields.io/npm/dm/weflex-ui.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/weflex-ui

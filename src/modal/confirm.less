@@ -1,0 +1,59 @@
+.@{prefix}-modal-confirm {
+
+  .@{prefix}-modal-header {
+    display: none;
+  }
+
+  .@{prefix}-modal-body {
+    padding: 30px 40px;
+  }
+
+  .@{prefix}-modal-body {
+    .@{prefix}-modal-title {
+      color: @text-color;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .@{prefix}-modal-content {
+      margin-left: 37px;
+      font-size: @font-size-base;
+      color: @text-color;
+      margin-top: 8px;
+    }
+
+    > i {
+      font-size: 24px;
+      margin-right: 10px;
+      padding: 0 1px;
+      position: relative;
+      top: 5px;
+    }
+
+    .icon-cancel-circled {
+      color: @colors-error;
+    }
+
+    .icon-help-circled {
+      color: @colors-warning;
+    }
+
+    .icon-fa-check-circle {
+      color: @colors-success;
+    }
+
+    .icon-info-circled {
+      color: @colors-primary;
+    }
+  }
+
+  .@{prefix}-modal-btns {
+    margin-top: 30px;
+    float: right;
+
+    button + button {
+      margin-left: 10px;
+      margin-bottom: 0;
+    }
+  }
+}

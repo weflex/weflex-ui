@@ -1,0 +1,31 @@
+module.exports = {
+  'prefix': 'ui',
+  'font-family': '"Open Sans", "PingFang SC", sans-serif',
+  'font-size-base': '12px',
+  'text-color': '#898989',
+  'border-radius-base': '3px',
+  'border-color-base': '#6ed4a4',
+  'box-shadow-base': '1px 1px 1px #333',
+  'colors': {
+    'primary' : '#6ed4a4',
+    'info'    : '#6ed4a4',
+    'error'   : '#ff5500',
+    'warning' : '#ffaa00',
+    'success' : '#9ed4a4',
+  },
+  'transition': 'all .2s ease-in-out',
+  
+  // animations
+  'ease-out'            : 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+  'ease-in'             : 'cubic-bezier(0.55, 0.055, 0.675, 0.19)',
+  'ease-in-out'         : 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+  'ease-out-back'       : 'cubic-bezier(0.12, 0.4, 0.29, 1.46)',
+  'ease-in-back'        : 'cubic-bezier(0.71, -0.46, 0.88, 0.6)',
+  'ease-in-out-back'    : 'cubic-bezier(0.71, -0.46, 0.29, 1.46)',
+  'ease-out-circ'       : 'cubic-bezier(0.08, 0.82, 0.17, 1)',
+  'ease-in-circ'        : 'cubic-bezier(0.6, 0.04, 0.98, 0.34)',
+  'ease-in-out-circ'    : 'cubic-bezier(0.78, 0.14, 0.15, 0.86)',
+  'ease-out-quint'      : 'cubic-bezier(0.23, 1, 0.32, 1)',
+  'ease-in-quint'       : 'cubic-bezier(0.755, 0.05, 0.855, 0.06)',
+  'ease-in-out-quint'   : 'cubic-bezier(0.86, 0, 0.07, 1)',
+};

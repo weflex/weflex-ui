@@ -19,5 +19,8 @@
     "webpack": "1.12.9"
   },
   "author": "Yorkie Liu <yorkiefixer@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "rc-animate": "^2.0.3"
+  }
 }

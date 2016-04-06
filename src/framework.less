@@ -1,0 +1,39 @@
+.ui-framework {
+  & * {
+    margin: 0;
+    padding: 0;
+    font-family: @font-family;
+    font-size: @font-size-base;
+    outline: none;
+    &, &:after, &:before {
+      box-sizing: border-box;
+    }
+  }
+  
+  input, textarea, select {
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    padding: 5px;
+    height: 30px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    transition: all .2s ease-in-out;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  input[disabled],
+  select[disabled],
+  button[disabled],
+  textarea[disabled] {
+    cursor: not-allowed;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #70CCA1;
+  }
+}

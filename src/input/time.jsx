@@ -1,18 +1,15 @@
 "use strict";
 
 import React from 'react';
-import { IControl } from '../base';
+import UIFramework from '../framework';
 
 /**
- * @class UITimeInput
+ * @class TimeInput
  */
-class UITimeInput extends IControl {
+export default UIFramework.Component(class extends UIFramework.Control {
+  static label    = 'time-input';
+  static flexbox  = true;
   render() {
-    const newProps = this.createProps({
-      type: 'time',
-    });
-    return <input {...newProps} />;
+    return <input {...this.createProps({type: 'time'})} />;
   }
-}
-
-module.exports = UITimeInput;
+})

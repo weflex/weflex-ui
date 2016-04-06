@@ -1,36 +1,28 @@
-"use strict";
+'use strict';
 
 import React from 'react';
-import { IControl } from '../base';
+import UIFramework from '../framework';
 
 /**
- * @class UIButton
- * @extend UIContril
+ * @class Button
  */
-class UIButton extends IControl {
+export default UIFramework.Component(class extends React.Component {
+  static label    = 'button';
+  static flexbox  = true;
   static propTypes = {
-    /**
-     * @property {String} text
-     */
     text: React.PropTypes.string,
-    /**
-     * @property {String} level - primary, warning, error
-     */
     level: React.PropTypes.oneOf([
-      'primary', 'warning', 'error', 'default'
+      'primary', 'warning', 'error', 'success'
     ]),
-    /**
-     * @property {Boolean} block
-     */
-    block: React.PropTypes.bool,
-    /**
-     * @property {Boolean} disabled
-     */
+    full: React.PropTypes.bool,
     disabled: React.PropTypes.bool,
-    /**
-     * @property {Number} disableInterval
-     */
-    disableInterval: React.PropTypes.number,
+    interval: React.PropTypes.number,
+    intervalFormat: React.PropTypes.func,
+  };
+  static defaultProps = {
+    full: false,
+    disabled: false,
+    intervalFormat: (count) => `waiting...(${count})`,
   };
   static styles = {
     button: {
@@ -44,6 +36,7 @@ class UIButton extends IControl {
       cursor: 'pointer',
       transition: 'all .3s ease-in-out',
       boxSizing: 'border-box',
+      outline: 'none',
     },
     disabled: {
       borderColor: '#eeeeee',
@@ -63,13 +56,13 @@ class UIButton extends IControl {
       backgroundColor: '#70CCA1',
     }
   };
-  
+
   constructor(props) {
     super(props);
     this.state = {
       disabled: false,
       hovered: false,
-      text: props.text,
+      text: props.children || props.text,
     };
   }
 
@@ -106,13 +99,13 @@ class UIButton extends IControl {
       isValid = await this.props.onClick(event);
     }
     if ((isValid === undefined || isValid) &&
-      this.props.disableInterval !== undefined) {
-      let count = this.props.disableInterval;
+      this.props.interval !== undefined) {
+      let count = this.props.interval;
       let interval = setInterval(() => {
         count -= 1;
         if (count >= 0) {
           this.setState({
-            text: `等待中(${count})`
+            text: this.props.intervalFormat(count),
           });
         } else {
           clearInterval(interval);
@@ -138,20 +131,24 @@ class UIButton extends IControl {
     }
 
     let srcProps = {};
-    let style = Object.assign({}, UIButton.styles.button);
+    let style = Object.assign({}, this.props.style, this.props.styles.button);
+    if (this.props.level) {
+      let level = this.props.level;
+      if (level && this.props.config.colors[level]) {
+        style.backgroundColor = style.borderColor = this.props.config.colors[level];
+        style.color = '#fff';
+      }
+    }
+
     if (disabled) {
-      style = Object.assign(style, UIButton.styles.disabled);
+      style = Object.assign(style, this.props.styles.disabled);
     } else {
       if (this.state.hovered) {
-        style = Object.assign(style, UIButton.styles.hovered);
+        style = Object.assign(style, this.props.styles.hovered);
       }
       srcProps.onMouseOver = this.onMouseOver.bind(this);
       srcProps.onMouseLeave = this.onMouseLeave.bind(this);
       srcProps.onClick = this.onClick.bind(this);
-    }
-    if (this.props.level) {
-      const level = this.props.level;
-      style = Object.assign(style, UIButton.styles.levels[level]);
     }
     if (this.props.block) {
       srcProps.flex = 1.0;
@@ -162,13 +159,10 @@ class UIButton extends IControl {
     }
 
     srcProps.style = style;
-    let newProps = this.createProps(srcProps);
     return (
-      <button {...newProps}>
+      <button {...srcProps}>
         {this.state.text}
       </button>
     );
   }
-}
-
-module.exports = UIButton;
+})
