@@ -8,7 +8,7 @@
     "react-ui-form"
   ],
   "scripts": {
-    "start": "./node_modules/.bin/webpack --watch"
+    "start": "./node_modules/.bin/webpack-dev-server --progress --port 6798"
   },
   "devDependencies": {
     "babel-core": "6.3.21",
@@ -21,6 +21,7 @@
   "author": "Yorkie Liu <yorkiefixer@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "rc-animate": "^2.0.3"
+    "rc-animate": "^2.0.3",
+    "webpack-dev-server": "^1.14.1"
   }
 }

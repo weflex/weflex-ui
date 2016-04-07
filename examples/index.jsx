@@ -143,7 +143,7 @@ class ExampleIndex extends React.Component {
             interval={20}
             intervalFormat={(count) => `⌛️中...（${count}）`}
           />
-          <UIFramework.Button flex={0.1}>
+          <UIFramework.Button flex={0.1} align="right">
             <UIFramework.Icon type="wifi" /> icon
           </UIFramework.Button>
         </UIFramework.Row>

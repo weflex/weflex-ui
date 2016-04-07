@@ -29,6 +29,14 @@ var UIComponent = (ComposedComponent, isStateless) => {
        */
       config: React.PropTypes.object,
       /**
+       * @property {Number} flex - the flexbox value would pass to Cell
+       */
+      flex: React.PropTypes.number,
+      /**
+       * @property {Number} align - the align value would pass to Cell
+       */
+      align: React.PropTypes.oneOf(['left', 'right']),
+      /**
        * @property {React.PropTypes.Node} children
        */
       children: React.PropTypes.node,
@@ -71,11 +79,13 @@ var UIComponent = (ComposedComponent, isStateless) => {
         styles: styles,
         className: this.className(label),
       });
+
       if (ComposedComponent.flexbox) {
         newProps.style = Object.assign(
           { width: '100%' }, newProps.style);
         return (
-          <Cell flex={this.props.flex} 
+          <Cell flex={this.props.flex}
+            align={this.props.align}
             className={newProps.className}>
             <ComposedComponent {...newProps} />
           </Cell>
@@ -191,7 +201,7 @@ var Cell = UIComponent(class Cell extends React.Component {
     const containerStyl = Object.assign({
       width: this.width
     }, this.props.styles.container);
-    if (this.props.align) {
+    if (typeof this.props.align === 'string') {
       containerStyl.float = this.props.align;
     }
     return (
