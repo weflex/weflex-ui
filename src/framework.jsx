@@ -75,7 +75,8 @@ var UIComponent = (ComposedComponent, isStateless) => {
         newProps.style = Object.assign(
           { width: '100%' }, newProps.style);
         return (
-          <Cell flex={this.props.flex}>
+          <Cell flex={this.props.flex} 
+            className={newProps.className}>
             <ComposedComponent {...newProps} />
           </Cell>
         );
@@ -146,7 +147,7 @@ var Row = UIComponent(class extends React.Component {
 });
 
 /**
- * @class UICell
+ * @class Cell
  * @extends UIComponent
  */
 var Cell = UIComponent(class Cell extends React.Component {
@@ -160,6 +161,10 @@ var Cell = UIComponent(class Cell extends React.Component {
      * @property {String} className - the class name
      */
     className: React.PropTypes.string,
+    /**
+     * @property {String} align - the position of this cell
+     */
+    align: React.PropTypes.oneOf(['left', 'right']),
   };
 
   static styles = {
@@ -186,6 +191,9 @@ var Cell = UIComponent(class Cell extends React.Component {
     const containerStyl = Object.assign({
       width: this.width
     }, this.props.styles.container);
+    if (this.props.align) {
+      containerStyl.float = this.props.align;
+    }
     return (
       <div style={containerStyl}>
         {this.props.children}
@@ -194,10 +202,20 @@ var Cell = UIComponent(class Cell extends React.Component {
   }
 });
 
+/**
+ * @class Divider
+ * @extends UIComponent
+ */
 var Divider = UIComponent(class Divider extends React.Component {
   static label = 'divider';
   static propTypes = {
+    /**
+     * @property {Number} height - the height
+     */
     height: React.PropTypes.number,
+    /**
+     * @property {Number} stroke - the stroke width
+     */
     stroke: React.PropTypes.number,
   };
   static defaultProps = {
