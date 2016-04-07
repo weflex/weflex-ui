@@ -152,7 +152,7 @@ var Row = UIComponent(class extends React.Component {
  */
 var Cell = UIComponent(class Cell extends React.Component {
   static label = 'cell';
-  static propTypes: {
+  static propTypes = {
     /**
      * @property {Number} flex - the flexbox value
      */
