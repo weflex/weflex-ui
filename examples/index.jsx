@@ -100,6 +100,30 @@ class UploadExample extends React.Component {
   }
 }
 
+class ColorPickerExample extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: ''
+    };
+  }
+  render() {
+    return (
+      <UIFramework.Row name="color-pickers">
+        <UIFramework.ColorPicker 
+          flex={0.5}
+          bindStateCtx={this}
+          bindStateName="color"
+        />
+        <UIFramework.TextInput
+          flex={0.5}
+          value={`color is: ${this.state.color}`}
+        />
+      </UIFramework.Row>
+    );
+  }
+}
+
 class ExampleIndex extends React.Component {
   constructor(props) {
     super(props);
@@ -192,6 +216,7 @@ class ExampleIndex extends React.Component {
         <CommonModalExample />
         <ConformModalExample />
         <UploadExample />
+        <ColorPickerExample />
       </UIFramework>
     );
   }

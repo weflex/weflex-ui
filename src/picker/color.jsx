@@ -1,6 +1,7 @@
 "use strict";
 
 import React from 'react';
+import UIFramework from '../framework';
 import { BindingComponent } from 'react-binding-component';
 
 /**
@@ -88,60 +89,63 @@ class UIColorItem extends React.Component {
 }
 
 /**
- * @class UIColorPicker
- * @extends BindingComponent
+ * @class ColorPicker
+ * @extends UIFramework.Component
+ * @extends UIFramework.Control
  */
-class UIColorPicker extends BindingComponent {
-  static propTypes = {
-    /**
-     * @property {Array} colors - the colors
-     */
-    colors: React.PropTypes.arrayOf(React.PropTypes.string),
-  };
-  static defaultProps = {
-    colors: [
-      '#ff8ac2',
-      '#6ed4a4',
-      '#00e4ff',
-      '#283547',
-      '#f0ab51',
-    ],
-  };
-  constructor(props) {
-    super(props);
-    this.state = {
-      colors: this.props.colors,
+export default UIFramework.Component(
+  class extends UIFramework.Control {
+    static label = 'color-picker';
+    static flexbox = true;
+    static propTypes = {
+      /**
+       * @property {Array} colors - the colors
+       */
+      colors: React.PropTypes.arrayOf(React.PropTypes.string),
     };
-  }
-  componentWillMount() {
-    if (this.props.bindStateCtx && !this.bindStateValue) {
-      this.bindStateValue = this.state.colors[0];
+    static defaultProps = {
+      colors: [
+        '#ff8ac2',
+        '#6ed4a4',
+        '#00e4ff',
+        '#283547',
+        '#f0ab51',
+      ],
+    };
+    constructor(props) {
+      super(props);
+      this.state = {
+        colors: this.props.colors,
+      };
+    }
+    componentWillMount() {
+      if (this.props.bindStateCtx && !this.bindStateValue) {
+        this.bindStateValue = this.state.colors[0];
+      }
+    }
+    onSelect(color) {
+      this.onChange({
+        target: {
+          value: color
+        }
+      });
+    }
+    render() {
+      const selected = this.bindStateValue || this.state.colors[0];
+      return (
+        <ul className="form-color-picker">
+          {this.state.colors.map((color) => {
+            return (
+              <UIColorItem
+                key={color}
+                color={color}
+                selected={selected === color} 
+                onClick={this.onSelect.bind(this, color)} 
+              />
+            );
+          })}
+        </ul>
+      );
     }
   }
-  onSelect(color) {
-    this.onChange({
-      target: {
-        value: color
-      }
-    });
-  }
-  render() {
-    const selected = this.bindStateValue || this.state.colors[0];
-    return (
-      <ul className="form-color-picker">
-        {this.state.colors.map((color) => {
-          return (
-            <UIColorItem
-              key={color}
-              color={color}
-              selected={selected === color} 
-              onClick={this.onSelect.bind(this, color)} 
-            />
-          );
-        })}
-      </ul>
-    );
-  }
-}
-
-module.exports = UIColorPicker;
+);
