@@ -150,6 +150,9 @@ class ExampleIndex extends React.Component {
         <UIFramework.Row name="row2" hint="hint2 text">
           <UIFramework.TextInput />
         </UIFramework.Row>
+        <UIFramework.Affix offsetTop={60}>
+          <UIFramework.Button>affix button</UIFramework.Button>
+        </UIFramework.Affix>
         <UIFramework.Row name="buttons" hint="here we show how buttons work">
           <UIFramework.Button text="btn1" flex={0.1} />
           <UIFramework.Button text="btn2" flex={0.1} disabled={true} />
@@ -170,6 +173,16 @@ class ExampleIndex extends React.Component {
           <UIFramework.Button flex={0.1} align="right">
             <UIFramework.Icon type="wifi" /> icon
           </UIFramework.Button>
+        </UIFramework.Row>
+        <UIFramework.Row name="message buttons">
+          <UIFramework.Button
+            text="show success message"
+            onClick={() => UIFramework.Message.success('success info')} 
+          />
+          <UIFramework.Button
+            text="show error message"
+            onClick={() => UIFramework.Message.error('error info')} 
+          />
         </UIFramework.Row>
         <UIFramework.Row name="upload buttons">
           <UIFramework.Upload flex={0.2} name="file" action="/">

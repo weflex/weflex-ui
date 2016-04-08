@@ -5,7 +5,7 @@ module.exports = {
   'text-color': '#898989',
   'border-radius-base': '3px',
   'border-color-base': '#6ed4a4',
-  'box-shadow-base': '1px 1px 1px #333',
+  'box-shadow-base': '0 0 4px rgba(0, 0, 0, 0.17)',
   'colors': {
     'primary' : '#6ed4a4',
     'info'    : '#6ed4a4',
