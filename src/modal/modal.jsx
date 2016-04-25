@@ -20,6 +20,7 @@ export default UIFramework.Component(
       maskAnimation: 'fade',
       confirmLoading: false,
       visible: false,
+      scrollable: false
     };
     static contextTypes = {
       antLocale: React.PropTypes.object,
@@ -36,6 +37,7 @@ export default UIFramework.Component(
       footer: PropTypes.node,
       title: PropTypes.node,
       closable: PropTypes.bool,
+      scrollable: PropTypes.bool
     };
 
     componentDidMount() {
@@ -54,6 +56,27 @@ export default UIFramework.Component(
         setTimeout(() => mousePosition = null, 20);
       });
       mousePositionEventBinded = true;
+      // scrollable
+      if (this.props.scrollable) {
+        window.onscroll = () => {
+          this.setState({
+            marginTop: -window.scrollY,
+          });
+        }
+      }
+    }
+    
+    componentWillUnmount() {
+      if (this.props.scrollable) {
+        window.onscroll = null; 
+      }
+    }
+
+    constructor(props) {
+      super(props);
+      this.state = {
+        marginTop: 0, // this state should only be affected when scrollable 
+      };
     }
 
     render() {
@@ -90,6 +113,7 @@ export default UIFramework.Component(
       return (
         <Dialog 
           {...props}
+          style={{marginTop: this.state.marginTop}}
           onClose={this.props.onCancel}
           footer={footer}
           visible={props.visible} 

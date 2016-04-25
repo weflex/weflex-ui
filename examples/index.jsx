@@ -37,7 +37,8 @@ class CommonModalExample extends React.Component {
         <UIFramework.Modal 
           title="this is first common modal" 
           visible={this.state.visible}
-          onCancel={this.onCancel.bind(this)}>
+          onCancel={this.onCancel.bind(this)}
+          scrollable={true}>
           <p>hint</p>
         </UIFramework.Modal>
       </UIFramework.Row>
