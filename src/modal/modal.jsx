@@ -60,9 +60,9 @@ export default UIFramework.Component(
       mousePositionEventBinded = true;
       // scrollable
       if (this.props.scrollable) {
-        window.onmousewheel = () => {
+        window.onmousewheel = (evt) => {
           this.setState({
-            marginTop: -window.scrollY,
+            marginTop: this.state.marginTop + evt.wheelDeltaY
           });
         }
       }
@@ -112,9 +112,9 @@ export default UIFramework.Component(
         footer = props.footer;
       }
 
-      let marginTop = this.state.marginTop;
-      if (!this.state.scrollable) {
-        marginTop = this.props.marginTop;
+      let marginTop = this.state.marginTop + 'px';
+      if (!this.props.scrollable) {
+        marginTop = this.props.marginTop + 'px';
       }
 
       return (
