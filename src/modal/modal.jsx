@@ -20,7 +20,8 @@ export default UIFramework.Component(
       maskAnimation: 'fade',
       confirmLoading: false,
       visible: false,
-      scrollable: false
+      scrollable: false,
+      marginTop: 0
     };
     static contextTypes = {
       antLocale: React.PropTypes.object,
@@ -37,7 +38,8 @@ export default UIFramework.Component(
       footer: PropTypes.node,
       title: PropTypes.node,
       closable: PropTypes.bool,
-      scrollable: PropTypes.bool
+      scrollable: PropTypes.bool,
+      marginTop: PropTypes.number
     };
 
     componentDidMount() {
@@ -110,10 +112,15 @@ export default UIFramework.Component(
         footer = props.footer;
       }
 
+      let marginTop = this.state.marginTop;
+      if (!this.state.scrollable) {
+        marginTop = this.props.marginTop;
+      }
+
       return (
         <Dialog 
           {...props}
-          style={{marginTop: this.state.marginTop}}
+          style={{marginTop}}
           onClose={this.props.onCancel}
           footer={footer}
           visible={props.visible} 
