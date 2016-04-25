@@ -60,7 +60,7 @@ export default UIFramework.Component(
       mousePositionEventBinded = true;
       // scrollable
       if (this.props.scrollable) {
-        window.onscroll = () => {
+        window.onmousewheel = () => {
           this.setState({
             marginTop: -window.scrollY,
           });
@@ -70,7 +70,7 @@ export default UIFramework.Component(
     
     componentWillUnmount() {
       if (this.props.scrollable) {
-        window.onscroll = null; 
+        window.onmousewheel = null; 
       }
     }
 
