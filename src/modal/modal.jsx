@@ -20,8 +20,7 @@ export default UIFramework.Component(
       maskAnimation: 'fade',
       confirmLoading: false,
       visible: false,
-      scrollable: false,
-      marginTop: 0
+      scrollable: true
     };
     static contextTypes = {
       antLocale: React.PropTypes.object,
@@ -38,8 +37,7 @@ export default UIFramework.Component(
       footer: PropTypes.node,
       title: PropTypes.node,
       closable: PropTypes.bool,
-      scrollable: PropTypes.bool,
-      marginTop: PropTypes.number
+      scrollable: PropTypes.bool
     };
 
     componentDidMount() {
@@ -60,25 +58,31 @@ export default UIFramework.Component(
       mousePositionEventBinded = true;
       // scrollable
       if (this.props.scrollable) {
-        window.onmousewheel = (evt) => {
-          this.setState({
-            marginTop: this.state.marginTop + evt.wheelDeltaY
-          });
-        }
+        window.onmousewheel = this.onMouseWheel.bind(this);
       }
     }
     
     componentWillUnmount() {
       if (this.props.scrollable) {
-        window.onmousewheel = null; 
+        window.onmousewheel = null;
       }
+    }
+
+    onMouseWheel(evt) {
+      const newStyl = {
+        marginTop: this.state.style.marginTop + evt.wheelDeltaY
+      };
+      this.setState({style: newStyl});
     }
 
     constructor(props) {
       super(props);
       this.state = {
-        marginTop: 0, // this state should only be affected when scrollable 
+        style: {
+          marginTop: 0
+        }
       };
+      this.mousewheelHandler = this.onMouseWheel.bind(this);
     }
 
     render() {
@@ -112,15 +116,10 @@ export default UIFramework.Component(
         footer = props.footer;
       }
 
-      let marginTop = this.state.marginTop + 'px';
-      if (!this.props.scrollable) {
-        marginTop = this.props.marginTop + 'px';
-      }
-
       return (
         <Dialog 
           {...props}
-          style={{marginTop}}
+          style={this.state.style}
           onClose={this.props.onCancel}
           footer={footer}
           visible={props.visible} 
