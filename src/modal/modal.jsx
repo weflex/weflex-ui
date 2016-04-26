@@ -56,33 +56,6 @@ export default UIFramework.Component(
         setTimeout(() => mousePosition = null, 20);
       });
       mousePositionEventBinded = true;
-      // scrollable
-      if (this.props.scrollable) {
-        window.onmousewheel = this.onMouseWheel.bind(this);
-      }
-    }
-    
-    componentWillUnmount() {
-      if (this.props.scrollable) {
-        window.onmousewheel = null;
-      }
-    }
-
-    onMouseWheel(evt) {
-      const newStyl = {
-        marginTop: this.state.style.marginTop + evt.wheelDeltaY
-      };
-      this.setState({style: newStyl});
-    }
-
-    constructor(props) {
-      super(props);
-      this.state = {
-        style: {
-          marginTop: 0
-        }
-      };
-      this.mousewheelHandler = this.onMouseWheel.bind(this);
     }
 
     render() {
@@ -119,7 +92,6 @@ export default UIFramework.Component(
       return (
         <Dialog 
           {...props}
-          style={this.state.style}
           onClose={this.props.onCancel}
           footer={footer}
           visible={props.visible} 
