@@ -29,7 +29,7 @@ var Select = UIFramework.Component(class extends UIFramework.Control {
   componentDidUpdate(prevProps, prevState) {
     const prevOptions = JSON.stringify(prevProps.options);
     const currOptions = JSON.stringify(this.props.options);
-    if (prevOptions !== currOptions) {
+    if (prevOptions !== currOptions && !this.props.value) {
       const options = this.props.options[0];
       this.onInputChange({
         target: {
