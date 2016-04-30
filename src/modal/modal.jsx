@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Dialog from 'rc-dialog';
+import Dialog from './dialog/src';
 import { Dom } from 'rc-util';
 import UIFramework from '../framework';
 import Button from '../button';
@@ -20,7 +20,6 @@ export default UIFramework.Component(
       maskAnimation: 'fade',
       confirmLoading: false,
       visible: false,
-      scrollable: true
     };
     static contextTypes = {
       antLocale: React.PropTypes.object,
@@ -37,7 +36,6 @@ export default UIFramework.Component(
       footer: PropTypes.node,
       title: PropTypes.node,
       closable: PropTypes.bool,
-      scrollable: PropTypes.bool
     };
 
     componentDidMount() {
