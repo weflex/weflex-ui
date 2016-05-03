@@ -186,7 +186,7 @@ var Cell = UIComponent(class Cell extends React.Component {
   };
 
   /**
-   * @property {String} with - the width string of the instance by IControl
+   * @property {String} width - the width string of the instance by IControl
    */
   get width() {
     let val = 'auto';

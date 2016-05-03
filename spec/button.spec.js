@@ -3,13 +3,13 @@
 const React = require('react');
 const renderToString = require('react-dom/server').renderToString;
 const cheerio = require('cheerio');
-const UIButton = require('../').UIButton;
+const UIFramework = require('../').default;
 
 describe('button component', function() {
 
   describe('render', function() {
     it('should render a simpe button', function() {
-      const node = React.createElement(UIButton, {
+      const node = React.createElement(UIFramework.Button, {
         text: 'button',
         onClick: function foobar() {},
       });

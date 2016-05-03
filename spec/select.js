@@ -3,7 +3,7 @@
 const React = require('react');
 const renderToString = require('react-dom/server').renderToString;
 const cheerio = require('cheerio');
-const form = require('../');
+const UIFramework = require('../').default;
 
 describe('picker components', function() {
 
@@ -17,7 +17,7 @@ describe('picker components', function() {
           next();
         },
       };
-      const picker = new form.UIOptionPicker({
+      const picker = new UIFramework.Select({
         bindStateCtx: ctx,
         bindStateName: 'property',
         options: options,
