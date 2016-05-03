@@ -3,6 +3,7 @@
 [![NPM version][npm-image]][npm-url]
 [![Build status][travis-image]][travis-url]
 [![Dependency Status][david-image]][david-url]
+[![Test coverage][coveralls-image]][coveralls-url]
 [![Downloads][downloads-image]][downloads-url]
 
 The UI Library that used by WeFlex Products and Developers.
@@ -76,6 +77,8 @@ MIT @ WeFlex
 [npm-url]: https://npmjs.org/package/weflex-ui
 [travis-image]: https://img.shields.io/travis/weflex/weflex-ui.svg?style=flat-square
 [travis-url]: https://travis-ci.org/weflex/weflex-ui
+[coveralls-image]: https://img.shields.io/codecov/c/github/weflex/weflex-ui.svg?style=flat-square
+[coveralls-url]: https://codecov.io/github/weflex/weflex-ui?branch=master
 [david-image]: http://img.shields.io/david/weflex/weflex-ui.svg?style=flat-square
 [david-url]: https://david-dm.org/weflex/weflex-ui
 [downloads-image]: http://img.shields.io/npm/dm/weflex-ui.svg?style=flat-square

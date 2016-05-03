@@ -1,11 +1,11 @@
 {
   "name": "weflex-ui",
-  "version": "2.7.1",
+  "version": "2.7.2",
   "description": "The UI Component that providing basic form controls which is compatible with React.js",
   "main": "lib/index.js",
   "scripts": {
     "pretest": "npm run lib",
-    "test": "NODE_ENV=test ./node_modules/.bin/jasmine",
+    "test": "NODE_ENV=test ./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine",
     "css": "node ./build-less.js > lib/framework.css",
     "lib": "babel src -d lib",
     "prebuild": "mkdir -p lib",
@@ -47,6 +47,7 @@
     "babel-preset-react": "6.5.0",
     "babel-preset-stage-1": "6.5.0",
     "cheerio": "0.20.0",
+    "istanbul": "^0.4.3",
     "jasmine": "2.4.1",
     "less-loader": "2.2.3",
     "react": "0.14.7",
