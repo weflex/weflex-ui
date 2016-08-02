@@ -361,11 +361,11 @@ class UIControl extends BindingComponent {
   componentWillMount() {
     if (this.props.bindStateCtx && !this.bindStateValue) {
       //TODO(Yorkie): should check if this has defaultValue
-      if (this.props.value !== undefined) {
+      if (this.props.value) {
         this.bindStateValue = this.props.value;
-      } else if (this.props.defaultValue !== undefined) {
+      } else if (this.props.defaultValue) {
         this.bindStateValue = this.props.defaultValue;
-      } else if (this.defaultValue !== undefined) {
+      } else if (this.defaultValue) {
         this.bindStateValue = this.defaultValue;
       }
     }

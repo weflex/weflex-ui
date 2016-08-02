@@ -24,7 +24,14 @@ var Select = UIFramework.Component(class extends UIFramework.Control {
     },
   };
   get defaultValue() {
-    return this.props.options[0].value;
+    let val;
+    try {
+      val = this.props.options[0].value;
+    } catch (error) {
+      return null;
+    } finally {
+      return val;
+    }
   }
   componentDidUpdate(prevProps, prevState) {
     const prevOptions = JSON.stringify(prevProps.options);
