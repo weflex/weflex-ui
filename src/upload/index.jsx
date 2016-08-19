@@ -96,9 +96,7 @@ export default UIFramework.Component(class extends React.Component {
   }
   beforeUpload(file) {
     this.uploadData = {
-      'key': file.name,
       'token': this.props.token,
-      'x:filename': file.name,
       'x:size': file.size,
     };
   }
