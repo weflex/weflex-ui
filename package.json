@@ -10,7 +10,7 @@
     "lib": "babel src -d lib",
     "prebuild": "mkdir -p lib",
     "build": "npm run css && npm run lib",
-    "prepublish": "npm run lib"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
