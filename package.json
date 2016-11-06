@@ -30,7 +30,6 @@
   "dependencies": {
     "classnames": "2.2.3",
     "css-animation": "1.2.1",
-    "less": "2.6.1",
     "rc-align": "^2.3.2",
     "rc-animate": "2.0.3",
     "rc-notification": "1.3.2",
@@ -38,8 +37,7 @@
     "rc-select": "5.10.4",
     "rc-upload": "1.9.0",
     "rc-util": "3.1.3",
-    "react-binding-component": "1.0.5",
-    "warning": "2.1.0"
+    "react-binding-component": "1.0.5"
   },
   "devDependencies": {
     "babel-cli": "6.6.5",
@@ -50,10 +48,12 @@
     "cheerio": "0.20.0",
     "istanbul": "^0.4.3",
     "jasmine": "2.4.1",
+    "less": "2.6.1",
     "less-loader": "2.2.3",
     "react": "0.14.7",
     "react-binding-component": "1.0.3",
     "react-dom": "0.14.7",
-    "style-parser": "^1.1.0"
+    "style-parser": "^1.1.0",
+    "warning": "2.1.0"
   }
 }
