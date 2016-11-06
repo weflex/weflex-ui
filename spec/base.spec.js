@@ -151,7 +151,7 @@ describe('base component', function() {
         for (let flex = 0.1; flex <= 1.0; flex += 0.1) {
           const percent = parseInt(flex * 100);
           const element = React.createElement(UIFramework.Cell, {flex});
-          const str = React.renderToStaticMarkup(element);
+          const str = renderToStaticMarkup(element);
           const styles = parse(cheerio(str).attr('style'));
           expect(styles.width).toBe(`calc(${percent}% - 5px)`);
           expect(styles.display).toBe('inline-block');
