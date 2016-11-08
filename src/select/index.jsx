@@ -50,7 +50,11 @@ var Select = UIFramework.Component(class extends UIFramework.Control {
     return (
       <select {...newProps}>
         {(this.props.options).map((item, index) => {
-          return <option key={index} value={item.value}>{item.text}</option>;
+          const optionProps = {value: item.value};
+          if (true === item.disabled) {
+            optionProps.disabled = true;
+          }
+          return <option key={index} {...optionProps}>{item.text}</option>;
         })}
       </select>
     );
