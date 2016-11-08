@@ -1,6 +1,6 @@
 {
   "name": "weflex-ui",
-  "version": "2.7.10",
+  "version": "2.8.0",
   "description": "The UI Component that providing basic form controls which is compatible with React.js",
   "main": "lib/index.js",
   "scripts": {
