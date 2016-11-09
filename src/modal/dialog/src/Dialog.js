@@ -228,7 +228,9 @@ var Dialog = _react2['default'].createClass({
     }
 
     var style = _extends({}, props.style, dest, {
-      marginTop: this.state.top
+      marginTop: 0,
+      maxHeight: 'calc(100% - 180px)',
+      overflowY: 'scroll',
     });
     var dialogProps = {
       className: [props.prefixCls, props.className].join(' '),
