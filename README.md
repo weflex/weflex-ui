@@ -66,7 +66,7 @@ $ npm test
 ```sh
 $ cd examples
 $ npm install && npm start
-$ open ./index.html
+http://localhost:6798/
 ```
 
 ## License
